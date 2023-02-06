@@ -1,47 +1,98 @@
 <!-- Portfolio Modals -->
-{% for post in site.posts %}
-<div class="portfolio-modal modal fade" id="portfolioModal-{{ post.modal-id }}" tabindex="-1" role="dialog"
-  aria-hidden="true">
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl">
+{% for game in site.games %}
+<div
+    class="portfolio-modal modal fade"
+    id="portfolioModal-{{ game.modal-id }}"
+    tabindex="-1"
+    role="dialog"
+    aria-hidden="true"
+>
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl"></div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body">
-            <h2>{{ post.title }}</h2>
-            <hr class="star-primary">
-            <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-            {% if post.description %}
-            <p>{{ post.description }}</p>
-            {% endif %}
-            <ul class="list-inline item-details">
-              {% if post.client %}
-              <li>Client:
-                <strong>{{ post.client }}</strong>
-              </li>
-              {% endif %}
-              {% if post.project-date %}
-              <li>Date:
-                <strong>{{ post.project-date }}</strong>
-              </li>
-              {% endif %}
-              {% if post.category %}
-              <li>Service:
-                <strong>{{ post.category }}</strong>
-              </li>
-              {% endif %}
-            </ul>
-            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>
-              Close</button>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>{{ game.game-title }}</h2>
+                        <hr class="star-primary" />
+                        <img
+                            src="img/portfolio/{{ game.img }}"
+                            class="img-responsive img-centered"
+                            alt="{{ game.alt }}"
+                        />
+                        {% if game.description %}
+                        <p>{{ game.description }}</p>
+                        {% endif %}
+                        <ul class="list-inline item-details">
+                            {% if game.status %}
+                            <li>
+                                Status:
+                                <strong>{{ game.status }}</strong>
+                            </li>
+                            {% endif %} {% if game.player-count %}
+                            <li>
+                                Player Count:
+                                <strong>{{ game.player-count }} players</strong>
+                            </li>
+                            {% endif %} {% if game.weight %}
+                            <li>
+                                Weight:
+                                <strong>{{ game.weight }}</strong>
+                            </li>
+                            {% endif %} {% if game.game-length %}
+                            <li>
+                                Length:
+                                <strong>{{ game.game-length }}</strong>
+                            </li>
+                            {% endif %}
+                        </ul>
+                        {% if game.mechanics %}
+                        <div>
+                            Mechanics:
+                            <strong>{{ game.mechanics }}</strong>
+                        </div>
+                        {% endif %}
+                        <div class="links">
+                            <h4>Links</h4>
+                            {% if game.teaser-video-url %} •
+                            <a
+                                href="{{ game.teaser-video-url }}"
+                                target="_blank"
+                                >View Teaser video</a
+                            >
+                            • {% endif %} {% if game.sellsheet-url %}
+                            <a href="{{ game.sellsheet-url }}" target="_blank"
+                                >Download Sellsheet</a
+                            >
+                            • {% endif %} {% if game.screentop-url %}
+                            <a href="{{ game.screentop-url }}" target="_blank"
+                                >Play on Screentop.gg</a
+                            >
+                            • {% endif %} {% if game.tabletop-url %}
+                            <a href="{{ game.tabletop-url }}" target="_blank"
+                                >Play on Tabletop Playground</a
+                            >
+                            {% endif %}
+                        </div>
+                        {% if game.long-description %}
+                        <h4>Full Description</h4>
+                        <p>{{ game.long-description }}</p>
+                        {% endif %}
+                        <button
+                            type="button"
+                            class="btn btn-default"
+                            data-dismiss="modal"
+                        >
+                            <i class="fa fa-times"></i> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 {% endfor %}
